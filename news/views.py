@@ -1,5 +1,5 @@
 import datetime as dt 
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 
 
@@ -28,4 +28,20 @@ def news_of_day(request):
             </body>
         </html>
         '''
+    return HttpResponse(html)
+def past_days_news(request,past_date):
+    try:
+    # converts data from the string Url
+        date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
+    except ValueError:
+        # Raise 404 error ValueError is thrown
+        raise Http404()
+    day = convert_dates(date)
+    html = f'''
+        <html>
+            <body>
+                <h1>News for {day} {date.day}-{date.month}-{date.year}</h1>
+            </body>
+        </html>
+            '''
     return HttpResponse(html)
