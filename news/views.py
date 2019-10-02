@@ -18,10 +18,10 @@ def convert_dates(dates):
     day = days[day_number]
     return day
 
-def news_of_day(request):
+def news_today(request):
     date = dt.date.today()
-    return render(request, 'all_news/today_news.html', {"date":date,}) 
-    
+    news = Article.todays_news()
+    return render(request, 'all_news/today_news.html',{"date": date,"news":news})
        
 def past_days_news(request,past_date):
     try:
@@ -32,6 +32,10 @@ def past_days_news(request,past_date):
         raise Http404()
         assert False
     if date == dt.date.today():
-        return redirect(news_of_day)
+        return redirect(news_today)
 
-    return render(request, 'all_news/past_news.html', {"date":date})
+    news = Article.days_news(date)
+    return render (request, 'all_news/past_news.html',{"date": date, "news":news})
+
+   
+
