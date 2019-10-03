@@ -42,6 +42,6 @@ class Article(models.Model):
     
     @classmethod
     def days_news(cls,date):
-        news = cls.objects.filter(pub_date_date =date)
+        news = cls.objects.filter(pub_date__date =date)
 
         return news
