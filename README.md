@@ -28,7 +28,7 @@ Alex Muliande.
 
 ## Screenshot
 
-<img src="" width='1000'>
+<img src="https://github.com/alex-muliande/tribune/blob/master/Screenshot%20from%202019-10-03%2012-23-18.png" width='1000'>
 
 ## Setup/Installation Requirements
 Python version 3.6
